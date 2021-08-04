@@ -22,6 +22,25 @@ Check if Istio can be installed
 istioctl verify-install
 ```
 
+Install Istio with Helm
+```
+kubectl create namespace istio-system
+helm install istio-base manifests/charts/base -n istio-system
+helm install istiod manifests/charts/istio-control/istio-discovery -n istio-system
+
+#Optional
+helm install istio-ingress manifests/charts/gateways/istio-ingress -n istio-system
+helm install istio-egress manifests/charts/gateways/istio-egress -n istio-system
+
+#Check
+kubectl get pods -n istio-system
+```
+
+
+
+
+
+
 Set Istio to NodePort at port 30080
 ```
 sed -i 's/LoadBalancer/NodePort/;s/31380/30080/' ./istio-1.0.6/install/kubernetes/istio-demo.yaml
