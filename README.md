@@ -12,6 +12,16 @@ Add istioctl to our path
 export PATH=$PWD/istio-1.0.6/bin:$PATH
 ```
 
+Or copy to /usr/local/bin
+```
+cp istioctl /usr/local/bin/
+```
+
+Check if Istio can be installed
+```
+istioctl verify-install
+```
+
 Set Istio to NodePort at port 30080
 ```
 sed -i 's/LoadBalancer/NodePort/;s/31380/30080/' ./istio-1.0.6/install/kubernetes/istio-demo.yaml
