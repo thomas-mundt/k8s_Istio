@@ -13,3 +13,8 @@ helm install istio-ingress manifests/charts/gateways/istio-ingress -n istio-syst
 helm install istio-egress manifests/charts/gateways/istio-egress -n istio-system --kubeconfig=/Users/bdk/.kube/k8s-cluster.yaml
 
 kubectl get pods -n istio-system --kubeconfig=/Users/bdk/.kube/k8s-cluster.yaml -w
+
+wget https://kiali.org/helm-charts/kiali-server-1.38.0.tgz
+tar xvzf kiali-server-1.38.0.tgz
+cd kiali-server
+helm install kiali-server  --namespace istio-system --set auth.strategy="anonymous"    . --kubeconfig=/Users/bdk/.kube/k8s-cluster.yaml
