@@ -18,3 +18,5 @@ wget https://kiali.org/helm-charts/kiali-server-1.38.0.tgz
 tar xvzf kiali-server-1.38.0.tgz
 cd kiali-server
 helm install kiali-server  --namespace istio-system --set auth.strategy="anonymous"    . --kubeconfig=/Users/bdk/.kube/k8s-cluster.yaml
+
+echo istioctl dashboard kiali
